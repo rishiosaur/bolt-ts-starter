@@ -2,11 +2,13 @@
  * Bolt's middleware format follows a similar spec as Express.
  */
 
-const filterEvent = (filterFn) => async ({ event, next }) => {
-	if (filterFn(event)) {
-		await next()
+const filterEvent =
+	(filterFn) =>
+	async ({ event, next }) => {
+		if (filterFn(event)) {
+			await next()
+		}
 	}
-}
 
 // Type checking for asynchronous middleware isn't completely done in the main repository yet, so make sure to export all of them casting to the any type.
 

@@ -1,5 +1,5 @@
-import { signing_secret, token, name } from './config'
 import { App, ExpressReceiver } from '@slack/bolt'
+import { signing_secret, token, name } from './config'
 import {
 	filterDM,
 	filterNoBotMessages,
@@ -13,7 +13,7 @@ const receiver = new ExpressReceiver({
 
 const app = new App({
 	signingSecret: signing_secret,
-	token: token,
+	token,
 	receiver,
 })
 
