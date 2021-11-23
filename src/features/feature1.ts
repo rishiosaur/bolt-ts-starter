@@ -1,9 +1,13 @@
-import { App } from '@slack/bolt';
+import { App, ExpressReceiver } from '@slack/bolt'
 
-const feature1 = async (app: App) => {
-    app.message("listener1", async ({message, say}) => {
-        say(`Hello World! <@${message.user}> said: ${message.text}`);
-    })
+const feature1 = async (app: App, receiver: ExpressReceiver) => {
+	app.message('listener1', async ({ message, say }) => {
+		say(`Hello World! <@${message.user}> said: ${message.text}`)
+	})
+
+	receiver.router.get('/test', async (req, res) => {
+		res.end('hello')
+	})
 }
 
-export default feature1;
+export default feature1
